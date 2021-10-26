@@ -19,7 +19,6 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.flywaydb:flyway-core")
@@ -29,7 +28,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     runtimeOnly("mysql:mysql-connector-java")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.projectreactor:reactor-test")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.9")
+    implementation("io.reactivex:rxjava-reactive-streams:1.2.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.0")
 }
 
 tasks.withType<KotlinCompile> {
