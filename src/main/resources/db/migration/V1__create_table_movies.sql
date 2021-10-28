@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS movies (
+     id BIGINT NOT NULL AUTO_INCREMENT,
+     name TEXT NOT NULL,
+     imdb_id TEXT,
+     PRIMARY KEY (id)
+);

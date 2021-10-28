@@ -19,6 +19,8 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.flywaydb:flyway-core")
@@ -30,10 +32,14 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test"){
         exclude("junit")
     }
-    implementation("io.reactivex.rxjava3:rxjava:3.0.9")
-    implementation("io.reactivex:rxjava-reactive-streams:1.2.1")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.0")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(module = "junit")
+        exclude(module = "mockito-core")
+    }
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("com.ninja-squad:springmockk:3.0.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 }
 
 tasks.withType<KotlinCompile> {

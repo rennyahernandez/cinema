@@ -12,7 +12,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureWebTestClient
 class GetMovieTest {
 
     @Autowired
@@ -20,7 +19,7 @@ class GetMovieTest {
 
     @Test
     fun `given a catalog request when responding must return 2xx and a not empty set`() {
-        val result = testRestTemplate.getForEntity("/catalog/", Set::class.java)
+        val result = testRestTemplate.getForEntity("/cinema/catalog", Set::class.java)
 
         Assertions.assertTrue(result.statusCode.is2xxSuccessful)
         Assertions.assertNotNull(result.body!!.isNotEmpty())
