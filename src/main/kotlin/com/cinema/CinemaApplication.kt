@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
 
 @SpringBootApplication
@@ -20,10 +21,12 @@ fun main(args: Array<String>) {
     runApplication<CinemaApplication>(*args)
 }
 
-@Bean
-fun cleanMigrateStrategy(): FlywayMigrationStrategy {
-    return FlywayMigrationStrategy { flyway: Flyway ->
-        flyway.repair()
-        flyway.migrate()
+@Configuration
+class FlywayMigration {
+    @Bean
+    fun cleanMigrateStrategy(): FlywayMigrationStrategy {
+        return FlywayMigrationStrategy { flyway: Flyway ->
+            flyway.migrate()
+        }
     }
 }

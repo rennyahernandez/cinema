@@ -23,13 +23,21 @@ class UpdateMovieTest {
 
     @Test
     fun `given a movie when creating it must return 2xx`() {
-        val request = mapOf("name" to "Matrix", "imdb_id" to "xx")
+        val request = mapOf(
+            "name" to "Matrix",
+            "description" to "Best Movie Ever",
+            "release_date" to "1999-06-01",
+            "rating" to "excellent",
+            "imdb_id" to "xx")
 
         val result = testRestTemplate.postForEntity<Movie>("/cinema/catalog/movie", request)
 
         Assertions.assertNotNull(result.body!!.id)
         Assertions.assertEquals(request["name"], result.body!!.name)
         Assertions.assertEquals(request["imdb_id"], result.body!!.imdbId)
+        Assertions.assertEquals(request["release_date"], result.body!!.releaseDate)
+        Assertions.assertEquals(request["description"], result.body!!.description)
+        Assertions.assertEquals(request["rating"], result.body!!.rating)
 
     }
 }

@@ -9,5 +9,9 @@ data class Movie(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val name: String,
-    val imdbId: String? = null
+    val description: String? = null,
+    val imdbId: String? = null,
+    val releaseDate: String,
+    val rating: String,
+    val runtimeMinutes: Int
 )
