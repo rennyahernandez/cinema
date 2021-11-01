@@ -11,10 +11,11 @@ import javax.websocket.server.PathParam
 @RequestMapping("/cinema")
 class ShowTimesController @Autowired constructor(
     val fetchShowTimeService: FetchShowTimeService,
-    val createShowTimeService: CreateShowTimeService
+    val createShowTimeService: CreateShowTimeService,
+    val updateShowTimeService: UpdateShowTimeService
     ) {
 
-    @GetMapping("/movie/{movieId}/show-times/")
+    @GetMapping("/movie/{movieId}/show-times")
     fun getShowTimesByMovieId(@PathVariable movieId: Long): Iterable<ShowTime> {
         return fetchShowTimeService.get(movieId)
     }
@@ -22,5 +23,10 @@ class ShowTimesController @Autowired constructor(
     @PostMapping("/movie/{movieId}/show-time")
     fun createShowTimeByMovieId(@PathVariable movieId: Long, @RequestBody showTime: ShowTime): ShowTime {
         return createShowTimeService.create(movieId, showTime)
+    }
+
+    @PutMapping("/show-time")
+    fun updateShowTimeByMovieId(@RequestBody showTime: ShowTime): ShowTime {
+        return updateShowTimeService.update(showTime)
     }
 }
