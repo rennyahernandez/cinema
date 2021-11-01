@@ -1,5 +1,6 @@
 package com.cinema.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
@@ -13,5 +14,8 @@ data class Movie(
     val imdbId: String? = null,
     val releaseDate: String,
     val rating: String,
-    val runtimeMinutes: Int
+    val runtimeMinutes: Int,
+    @OneToMany(cascade= [CascadeType.ALL], mappedBy="movie")
+    @JsonIgnore
+    val showTimes: Set<ShowTime> = setOf()
 )

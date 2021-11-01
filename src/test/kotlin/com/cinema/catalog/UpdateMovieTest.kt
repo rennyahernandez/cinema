@@ -1,14 +1,10 @@
 package com.cinema.catalog
 
 import com.cinema.model.Movie
-import com.fasterxml.jackson.module.kotlin.jsonMapper
-import com.fasterxml.jackson.module.kotlin.kotlinModule
-import com.jayway.jsonpath.TypeRef
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.client.postForEntity
@@ -38,6 +34,5 @@ class UpdateMovieTest {
         Assertions.assertEquals(request["release_date"], result.body!!.releaseDate)
         Assertions.assertEquals(request["description"], result.body!!.description)
         Assertions.assertEquals(request["rating"], result.body!!.rating)
-
     }
 }
