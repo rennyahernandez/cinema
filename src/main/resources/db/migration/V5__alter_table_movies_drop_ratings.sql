@@ -1,0 +1,1 @@
+ALTER TABLE movies drop column rating;

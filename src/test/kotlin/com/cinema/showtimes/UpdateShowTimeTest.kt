@@ -26,7 +26,7 @@ class UpdateShowTimeTest {
     @Test
     fun `given an existing show time when updating must return updated instance`(){
 
-        val oldShowTime = repository.save(MovieObjectMother().aShowTime)
+        val oldShowTime = repository.save(MovieObjectMother().aShowTime.copy(id = null))
 
         val request = mapOf("id" to oldShowTime.id, "show_date_time" to LocalDateTime.now())
 

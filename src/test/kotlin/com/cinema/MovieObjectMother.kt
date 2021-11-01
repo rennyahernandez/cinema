@@ -12,7 +12,6 @@ class MovieObjectMother {
         "aDescription",
         "an Imdb Id",
         "2020-01-01",
-        "Good",
         120,
         setOf(),
         BigDecimal.TEN

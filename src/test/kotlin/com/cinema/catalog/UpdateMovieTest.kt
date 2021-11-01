@@ -24,7 +24,6 @@ class UpdateMovieTest {
             "name" to "Matrix",
             "description" to "Best Movie Ever",
             "release_date" to "1999-06-01",
-            "rating" to "excellent",
             "imdb_id" to "xx",
             "price" to BigDecimal.valueOf(10)
         )
@@ -36,8 +35,6 @@ class UpdateMovieTest {
         Assertions.assertEquals(request["imdb_id"], result.body!!.imdbId)
         Assertions.assertEquals(request["release_date"], result.body!!.releaseDate)
         Assertions.assertEquals(request["description"], result.body!!.description)
-        Assertions.assertEquals(request["rating"], result.body!!.rating)
         Assertions.assertEquals(request["price"], result.body!!.price)
-
     }
 }
