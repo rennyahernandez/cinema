@@ -1,6 +1,7 @@
 package com.cinema.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import java.math.BigDecimal
 import javax.persistence.*
 
 @Entity
@@ -17,5 +18,6 @@ data class Movie(
     val runtimeMinutes: Int,
     @OneToMany(cascade= [CascadeType.ALL], mappedBy="movie")
     @JsonIgnore
-    val showTimes: Set<ShowTime> = setOf()
+    val showTimes: Set<ShowTime> = setOf(),
+    val price: BigDecimal
 )

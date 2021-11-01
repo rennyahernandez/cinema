@@ -3,6 +3,7 @@ package com.cinema.showtimes
 import com.cinema.model.Movie
 import com.cinema.model.ShowTime
 import com.cinema.repository.ShowTimeRepository
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -12,7 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import java.math.BigDecimal
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -37,9 +41,10 @@ class GetShowTimesTest {
                 "2020-01-01",
                 "Good",
                 120,
-                setOf()
+                setOf(),
+                BigDecimal.TEN
             ),
-            LocalDateTime.now()
+            LocalDateTime.now(),
         )
 
         `when`(showTimeService.get(1))
@@ -55,6 +60,6 @@ class GetShowTimesTest {
 
         Assertions.assertNotNull(body)
         Assertions.assertEquals(expectedShowTime.id, (body["id"] as Int).toLong())
-        Assertions.assertEquals(expectedShowTime.showDateTime.toString(), body["show_date_time"])
+        Assertions.assertEquals(expectedShowTime.showDateTime.format(DateTimeFormatter.ISO_DATE_TIME), body["show_date_time"])
     }
 }

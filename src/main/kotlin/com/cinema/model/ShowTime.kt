@@ -1,6 +1,8 @@
 package com.cinema.model
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnore
+import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -15,5 +17,6 @@ data class ShowTime(
     @JsonIgnore
     val movie: Movie,
     @Column(name = "show_time")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,  pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
     val showDateTime: LocalDateTime
 )

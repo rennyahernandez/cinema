@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.client.postForEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import java.math.BigDecimal
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -24,9 +25,11 @@ class UpdateMovieTest {
             "description" to "Best Movie Ever",
             "release_date" to "1999-06-01",
             "rating" to "excellent",
-            "imdb_id" to "xx")
+            "imdb_id" to "xx",
+            "price" to BigDecimal.valueOf(10)
+        )
 
-        val result = testRestTemplate.postForEntity<Movie>("/cinema/catalog/movie", request)
+        val result = testRestTemplate.postForEntity<Movie>("/cinema/movie", request)
 
         Assertions.assertNotNull(result.body!!.id)
         Assertions.assertEquals(request["name"], result.body!!.name)
@@ -34,5 +37,7 @@ class UpdateMovieTest {
         Assertions.assertEquals(request["release_date"], result.body!!.releaseDate)
         Assertions.assertEquals(request["description"], result.body!!.description)
         Assertions.assertEquals(request["rating"], result.body!!.rating)
+        Assertions.assertEquals(request["price"], result.body!!.price)
+
     }
 }
