@@ -1,5 +1,6 @@
 package com.cinema.showtimes
 
+import com.cinema.MovieObjectMother
 import com.cinema.model.Movie
 import com.cinema.model.ShowTime
 import com.cinema.repository.ShowTimeRepository
@@ -31,21 +32,7 @@ class GetShowTimesTest {
     @Test
     fun `given an existing movie when fetching existing show time must go ok`() {
 
-        val expectedShowTime = ShowTime(
-            1,
-            Movie(
-                1,
-                "aName",
-                "aDescription",
-                "an Imdb Id",
-                "2020-01-01",
-                "Good",
-                120,
-                setOf(),
-                BigDecimal.TEN
-            ),
-            LocalDateTime.now(),
-        )
+        val expectedShowTime = MovieObjectMother().aShowTime
 
         `when`(showTimeService.get(1))
             .thenReturn(
