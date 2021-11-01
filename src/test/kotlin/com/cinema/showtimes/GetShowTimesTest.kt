@@ -22,7 +22,7 @@ class GetShowTimesTest {
     lateinit var testRestTemplate: TestRestTemplate
 
     @MockBean
-    lateinit var showTimeRepository: ShowTimeRepository
+    lateinit var showTimeService: FetchShowTimeService
 
     @Test
     fun `given an existing movie when fetching existing show time must go ok`() {
@@ -42,7 +42,7 @@ class GetShowTimesTest {
             LocalDateTime.now()
         )
 
-        `when`(showTimeRepository.findAllByMovieId(1))
+        `when`(showTimeService.get(1))
             .thenReturn(
                 setOf(
                     expectedShowTime

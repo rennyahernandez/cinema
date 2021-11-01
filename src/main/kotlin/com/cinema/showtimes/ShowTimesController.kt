@@ -12,10 +12,10 @@ import javax.websocket.server.PathParam
 
 @RestController
 @RequestMapping("/cinema")
-class ShowTimesController @Autowired constructor(val showTimeRepository: ShowTimeRepository) {
+class ShowTimesController @Autowired constructor(val fetchShowTimeService: FetchShowTimeService) {
 
     @GetMapping("/movie/{movieId}/show-times/")
     fun getShowTimesByMovieId(@PathVariable movieId: Long): Iterable<ShowTime> {
-        return showTimeRepository.findAllByMovieId(movieId)
+        return fetchShowTimeService.get(movieId)
     }
 }
