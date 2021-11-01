@@ -9,7 +9,6 @@ import javax.websocket.server.PathParam
 @RequestMapping("/cinema")
 class CatalogController constructor(
     val fetchCatalogService: FetchCatalogService,
-    val updateCatalogService: UpdateCatalogService,
     val createMovieService: CreateMovieService,
     val fetchMovieService: FetchMovieService
     ){

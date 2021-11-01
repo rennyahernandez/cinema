@@ -7,7 +7,5 @@ import org.springframework.stereotype.Service
 
 @Service
 class CreateMovieService @Autowired constructor(val movieRepository: MovieRepository) {
-    fun save(movie: Movie): Movie {
-        return movieRepository.save(movie)
-    }
+    fun save(movie: Movie): Movie = movieRepository.save(movie)
 }

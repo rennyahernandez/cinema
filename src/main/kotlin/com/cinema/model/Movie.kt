@@ -16,7 +16,7 @@ data class Movie(
     val releaseDate: String,
     val rating: String,
     val runtimeMinutes: Int,
-    @OneToMany(cascade= [CascadeType.ALL], mappedBy="movie")
+    @OneToMany(cascade= [], mappedBy="movie")
     @JsonIgnore
     val showTimes: Set<ShowTime> = setOf(),
     val price: BigDecimal
