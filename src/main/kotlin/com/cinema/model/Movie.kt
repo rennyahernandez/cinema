@@ -1,5 +1,6 @@
 package com.cinema.model
 
+import com.cinema.reviews.model.Review
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.math.BigDecimal
 import javax.persistence.*
@@ -20,5 +21,8 @@ data class Movie(
     @OneToMany(cascade= [], mappedBy="movie")
     @JsonIgnore
     val showTimes: Set<ShowTime> = setOf(),
-    val price: BigDecimal
+    val price: BigDecimal,
+    @OneToMany(cascade= [], mappedBy="movie")
+    @JsonIgnore
+    val reviews: Set<Review>? = setOf()
 )
