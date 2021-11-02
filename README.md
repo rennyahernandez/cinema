@@ -9,3 +9,4 @@
 
 ## Technical Assumptions
    * In production environments, database migration changes must be supervised. We may assume that no code is in production and there is no production data before release.
+   * API Docs are available using `host:port/api-docs`
