@@ -13,7 +13,7 @@ import java.math.BigDecimal
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class UpdateMovieTest {
+class CreateMovieTest {
 
     @Autowired
     lateinit var testRestTemplate: TestRestTemplate
