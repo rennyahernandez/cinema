@@ -10,3 +10,4 @@
 ## Technical Assumptions
    * In production environments, database migration changes must be supervised. We may assume that no code is in production and there is no production data before release.
    * API Docs are available using `host:port/api-docs`
+   * In order to access the OMDB movie database API you will need to set the `IMDB_KEY` ENV variable. For further info about how to get this key visit http://www.omdbapi.com/apikey.aspx
